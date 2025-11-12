@@ -172,6 +172,71 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* New Launching Section (Atala Skirt) - Based on 00:02-00:05 */}
+      <section id="new-arrival" className="py-8 md:py-12 px-4 md:px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-gray-900">
+            New Launching - Drawstring Collection
+          </h2>
+          {/* Grid optimized for many items in the video */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4 justify-items-center">
+            {[
+              'Pinkies Bumb', 'Moonlit Silvermist', 'Couple Black Light', 'Bloom Stripe Clamp (White Bone)', 'Bloom Stripe Clamp (Maroon)', 'Bloom Stripe Clamp (Milo)', 'Bloom Stripe (Navy)', 
+              'Bloom Stripe (Mauve)', 'Bloom Stripe (Brown)'
+            ].map((productName, index) => {
+              // Generate image path based on product name with special handling for naming inconsistencies
+              let imagePath = `/img/Tautan Rasa - ${productName}.png`;
+              
+              // Handle special case for "Bloom Stripe Clamp (Milo)" which has "Bllom" in filename
+              if (productName === 'Bloom Stripe Clamp (Milo)') {
+                imagePath = '/img/Tautan Rasa - Bllom Stripe Clamp (Milo).png';
+              }
+              // Handle special case for "Bloom Stripe Clamp (White Bone)" which has "Bllom" in filename
+              if (productName === 'Bloom Stripe Clamp (White Bone)') {
+                imagePath = '/img/Tautan Rasa - Bllom Stripe Clamp (White Bone).png';
+              }
+              
+              // Generate href based on product name mapping
+              let productHref = `/products/tautan-rasa-${productName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+              
+              // Map specific products to Shopee links
+              if (productName === 'Pinkies Bumb') {
+                productHref = 'https://id.shp.ee/C3QXqMn';
+              } else if (productName === 'Moonlit Silvermist') {
+                productHref = 'https://id.shp.ee/togM5cm';
+              } else if (productName === 'Couple Black Light') {
+                productHref = 'https://id.shp.ee/ENbe6Kg';
+              } else if (productName.includes('Bloom Stripe Clamp')) {
+                productHref = 'https://id.shp.ee/wK1NgyB';
+              } else if (productName.includes('Bloom Stripe (')) {
+                productHref = 'https://id.shp.ee/Dq7dLdo';
+              }
+              
+              return (
+                <Link 
+                  key={index} 
+                  href={productHref} 
+                  className="text-center group hover:opacity-80 transition-opacity duration-200 w-full"
+                >
+                  <div className="aspect-[3/4] w-full bg-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <a href={productHref}>
+                      <Image
+                        src={imagePath}
+                        alt={`Tautan Rasa ${productName}`}
+                        width={300}
+                        height={400}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </a>
+                  </div>
+                  <p className="mt-1 md:mt-2 text-xs md:text-sm text-gray-700 font-medium" data-product-name={`Tautan Rasa ${productName}`}>{productName}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Company Profile Section */}
       <section className="bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 py-12 md:py-16 px-4 md:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-rose-100/30 to-purple-100/30"></div>
@@ -377,71 +442,6 @@ export default function HomePage() {
                 Your satisfaction means everything to us. That&apos;s why every piece comes with a 1-month guarantee — because beauty should last, just like our connection with you.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* New Launching Section (Atala Skirt) - Based on 00:02-00:05 */}
-      <section id="new-arrival" className="py-8 md:py-12 px-4 md:px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-gray-900">
-            New Launching - Drawstring Collection
-          </h2>
-          {/* Grid optimized for many items in the video */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4 justify-items-center">
-            {[
-              'Pinkies Bumb', 'Moonlit Silvermist', 'Couple Black Light', 'Bloom Stripe Clamp (White Bone)', 'Bloom Stripe Clamp (Maroon)', 'Bloom Stripe Clamp (Milo)', 'Bloom Stripe (Navy)', 
-              'Bloom Stripe (Mauve)', 'Bloom Stripe (Brown)'
-            ].map((productName, index) => {
-              // Generate image path based on product name with special handling for naming inconsistencies
-              let imagePath = `/img/Tautan Rasa - ${productName}.png`;
-              
-              // Handle special case for "Bloom Stripe Clamp (Milo)" which has "Bllom" in filename
-              if (productName === 'Bloom Stripe Clamp (Milo)') {
-                imagePath = '/img/Tautan Rasa - Bllom Stripe Clamp (Milo).png';
-              }
-              // Handle special case for "Bloom Stripe Clamp (White Bone)" which has "Bllom" in filename
-              if (productName === 'Bloom Stripe Clamp (White Bone)') {
-                imagePath = '/img/Tautan Rasa - Bllom Stripe Clamp (White Bone).png';
-              }
-              
-              // Generate href based on product name mapping
-              let productHref = `/products/tautan-rasa-${productName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-              
-              // Map specific products to Shopee links
-              if (productName === 'Pinkies Bumb') {
-                productHref = 'https://id.shp.ee/C3QXqMn';
-              } else if (productName === 'Moonlit Silvermist') {
-                productHref = 'https://id.shp.ee/togM5cm';
-              } else if (productName === 'Couple Black Light') {
-                productHref = 'https://id.shp.ee/ENbe6Kg';
-              } else if (productName.includes('Bloom Stripe Clamp')) {
-                productHref = 'https://id.shp.ee/wK1NgyB';
-              } else if (productName.includes('Bloom Stripe (')) {
-                productHref = 'https://id.shp.ee/Dq7dLdo';
-              }
-              
-              return (
-                <Link 
-                  key={index} 
-                  href={productHref} 
-                  className="text-center group hover:opacity-80 transition-opacity duration-200 w-full"
-                >
-                  <div className="aspect-[3/4] w-full bg-gray-200 rounded-lg shadow-sm overflow-hidden">
-                    <a href={productHref}>
-                      <Image
-                        src={imagePath}
-                        alt={`Tautan Rasa ${productName}`}
-                        width={300}
-                        height={400}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </a>
-                  </div>
-                  <p className="mt-1 md:mt-2 text-xs md:text-sm text-gray-700 font-medium" data-product-name={`Tautan Rasa ${productName}`}>{productName}</p>
-                </Link>
-              );
-            })}
           </div>
         </div>
       </section>
